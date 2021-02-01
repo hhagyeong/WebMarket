@@ -1,4 +1,5 @@
 *  linguist-vendored
-
+*.java linguist-vendored=false
 *.jsp linguist-vendored=false
+*.java linguist-vendored=true
 *.jsp linguist-detectable=true
