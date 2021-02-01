@@ -1,6 +1,6 @@
 * text=auto
-* linguist-vendored
 
+*.jsp linguist-detectable=true
 *.java linguist-detectable=false
 *.css linguist-detectable=false
 *.js linguist-detectable=false
