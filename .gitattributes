@@ -1,5 +1,4 @@
 *.jsp linguist-detectable=true
 *.java linguist-detectable=false
-*.class linguist-detectable=false
 board/* linguist-vendored
 
