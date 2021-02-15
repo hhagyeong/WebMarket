@@ -1,12 +1,24 @@
 <%@ page contentType="text/html; charset=utf-8"%>
 <%@ page import="dto.Product"%>
 <%@ page import="dao.ProductRepository"%>
-<%@ page errorPage="exceptionNoProductId.jsp" %>
+<%@ page errorPage="exceptionNoProductId.jsp"%>
 <html>
 <head>
 <link rel="stylesheet" href="./resources/css/bootstrap.min.css" />
 <title>상품 상세 정보</title>
 </head>
+
+<!-- 장바구니 등록을 위한 핸들러 함수 -->
+<script type="text/javascript">
+	function addToCart() {
+		if (confirm("상품을 장바구니에 추가하시겠습니까?")) {
+			document.addForm.submit();
+		} else {
+			document.addForm.reset();
+		}
+	}
+</script>
+
 <body>
 	<jsp:include page="menu.jsp" />
 	<div class="jumbotron">
@@ -21,9 +33,8 @@
 	%>
 	<div class="container">
 		<div class="row">
-			<div clsss="col-md-5">
-				<img src="c:/upload/<%=product.getFilename()%>"
-					style="width: 100%">
+			<div class="col-md-5">
+				<img src="c:/upload/<%=product.getFilename()%>" style="width: 100%">
 			</div>
 			<div class="col-md-6">
 				<h3><%=product.getPname()%></h3>
@@ -37,11 +48,16 @@
 					<b>분류</b><%=product.getCategory()%>
 				<p>
 					<b>재고 수</b><%=product.getUnitsInstock()%>
-				<h4><%=product.getUnitPrice()%>원
-				</h4>
+				<h4><%=product.getUnitPrice()%>원</h4>
 				<p>
-					<a href="#" class="btn btn-info">상품 주문 &raquo;</a> <a
-						href="./products.jsp" class="btn btn-secondary">상품 목록 &raquo;</a>
+				<form name="addForm"
+					action="./addCart.jsp?id=<%=product.getProductId()%>" method="post">
+					<p>
+						<!-- '상품주문'클릭 시 addToCart() 실행 -->
+						<a href="#" class="btn btn-info" onclick="addToCart()">상품주문 &raquo;</a>
+						<a href="./cart.jsp" class="btn btn-warning">장바구니 &raquo;</a>
+						<a href="./products.jsp" class="btn btn-secondary">상품목록 &raquo;</a>
+				</form>
 			</div>
 		</div>
 	</div>
