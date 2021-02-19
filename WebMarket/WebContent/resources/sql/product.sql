@@ -7,8 +7,6 @@ CREATE TABLE IF NOT EXISTS product(
 	p_manufacturer VARCHAR(20), --상품 제조사
 	p_unitsInStock LONG, --상품 재고 수
 	p_condition VARCHAR(20),  --상품 상태
-	p_filName VARCHAR(20), --상품 이미지 파일명
+	p_fileName  VARCHAR(20), --상품 이미지 파일명
 	PRIMARY KEY (p_id) --고유한 키 인덱스: 상품 아이디
 )default CHARSET=utf8;
-
-drop table product;
