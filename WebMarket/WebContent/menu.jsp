@@ -10,13 +10,15 @@
 		</div>
 		<div>
 			<ul class="navbar-nav mr-auto">
-				<c:choose>
+				
 				<!-- 조건1: sessionId의 속성 값이 없으면 로그인, 회원 가입 메뉴 출력 -->
+				<!-- 조건2: sessionId의 속성 값이 있으면 로그아웃, 회원 수정 메뉴 출력 -->
+				<c:choose>
 					<c:when test="${empty sessionId}">
 						<li class="nav-item"><a class="nav-link" href="<c:url value="/member/loginMember.jsp"/>">로그인</a></li>
 						<li class="nav-item"><a class="nav-link" href="<c:url value="/member/addMember.jsp"/>">회원 가입</a></li>
 					</c:when>
-					<!-- 조건2: sessionId의 속성 값이 있으면 로그아웃, 회원 수정 메뉴 출력 -->
+					
 					<c:otherwise>
 						<li style="padding-top: 7px; color:white">[<%=sessionId%>님]</li>
 						<li class="nav-item"><a class="nav-link" href="<c:url value="/member/logoutMember.jsp"/>">로그아웃</a></li>
